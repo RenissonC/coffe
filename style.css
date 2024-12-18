@@ -101,7 +101,7 @@ a{
 }
 .apresentationHome{
     position: relative;
-    background: url(/img/home-img.jpg);
+    background: url(https://raw.githubusercontent.com/RenissonC/coffe/refs/heads/main/img/home-img.jpg);
     background-size: cover;
     background-position: center;
     height: 90vh;
