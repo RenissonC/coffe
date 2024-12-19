@@ -7,7 +7,7 @@ if (document.readyState == 'loading'){
 ready()
 
 }
-var c = 0
+var contAmountInCart = 0
 var totalamount = '0'
 function ready(){ 
 
@@ -60,10 +60,6 @@ function ready(){
     finalPurchase.addEventListener('click', makePurchase)
    
     
-
-   
-
-    
 }
 var data = new Date()
 var hour = data.getHours()
@@ -74,7 +70,7 @@ if(hour >= 8 && hour < 22){
 document.title = 'Cafeteria - Local: CLOSE'
 }
 function makePurchase(){
-    c = 0
+    contAmountInCart = 0
     if(totalamount == '0' || totalamount == '0,00' ){
         alert('Seu carrinho está vazio')
 
@@ -105,9 +101,9 @@ function removeProductCart(event){
     let target = event.target
     target.parentElement.parentElement.remove()
     updateTotal()
-    c-=1
-    document.getElementsByClassName('amountInCar')[0].innerHTML = c
-    document.getElementsByClassName('product-qtd-input')[0] = 0
+    contAmountInCart-=1
+    document.getElementsByClassName('amountInCar')[0].innerHTML = contAmountInCart
+    
 }
 
 function updateTotal(){
@@ -142,7 +138,7 @@ function addToCart(event){
         cartProductTitle[i].parentElement.parentElement.getElementsByClassName('product-qtd-input')[0].value++
         //console.log(  )
         updateTotal()
-        popUpRepeat()
+        popUpAdd('ADICIONADO AO CARRINHO NOVAMENTE!!!')
         
         return
         
@@ -169,20 +165,20 @@ function addToCart(event){
     
     const productContainer = document.querySelector('.cartItens')
     productContainer.appendChild(newProduct)
-    c+=1
-    document.getElementsByClassName('amountInCar')[0].innerHTML = c
+    contAmountInCart+=1
+    document.getElementsByClassName('amountInCar')[0].innerHTML = contAmountInCart
 
-    popUpAdd()
+    popUpAdd('ADICIONADO AO CARRINHO!!!')
     newProduct.getElementsByClassName('product-qtd-input')[0].addEventListener('change',inputIsZero)
     newProduct.getElementsByClassName('remove-product-button')[0].addEventListener('click',removeProductCart)
     updateTotal()
  }
 
-function popUpAdd(){
+function popUpAdd(message){
     var popUpAddToCart = document.querySelector('.Area-popupAddToCart')
     var divPopupAddToCart = document.createElement('div')
     divPopupAddToCart.classList.add('popupAddToCart')
-    divPopupAddToCart.textContent = 'ADICIONADO AO CARRINHO!!!'
+    divPopupAddToCart.textContent = message
     popUpAddToCart.appendChild(divPopupAddToCart)
     
     let intervalId = setTimeout(() => {
@@ -192,20 +188,8 @@ function popUpAdd(){
         }
     }, 600);
 }
-function popUpRepeat(){
-    var popUpAddToCart = document.querySelector('.Area-popupAddToCart')
-    var divPopupAddToCart = document.createElement('div')
-    divPopupAddToCart.classList.add('popupAddToCart')
-    divPopupAddToCart.textContent = 'ADICIONADO NOVAMENTE!!!'
-    popUpAddToCart.appendChild(divPopupAddToCart)
-    
-    let intervalId = setTimeout(() => {
-        if (divPopupAddToCart.parentNode) {
-            popUpAddToCart.removeChild(divPopupAddToCart);
-            clearInterval(intervalId);
-        }
-    }, 600);
-}
+
+
 
 
 
