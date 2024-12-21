@@ -40,19 +40,25 @@ a{
 }
 .menu{
     display: flex;
+    
     gap: 25px;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     list-style-type: none;  
+    
+   
     
     
 }
 .menu-nav a:hover{
     text-decoration: underline;
-    color:var(--corSec);
+   
     transform: translateY(10%);
     transition: .2s;
 }
 .menu-nav a{
+    color: var(--corSec);
+    display: flex;
+    border-bottom: 1px solid black;
     padding: 10px;
 }
 .cartANDsearch{
@@ -495,25 +501,34 @@ body.no-scroll {
     }
     .menu-nav .menu{
         display: block;
+        flex-direction: column;
+        overflow-x: auto;
         position: absolute;
         background-color: #d3ad7f;
         color: black;
         width: 40%;
         height: 0px;
         top: 99px;
-        left: 120px;
-
+        left: 10%;
         transition: 0.3s;
         z-index: 1000;   
         visibility: hidden;
-        overflow: hidden;
+        overflow-x: auto;
+        border: 1px solid white;
+
         
     }
-    .menu-nav.active .menu li {
-        
+    .menu-nav a:hover{
+        text-decoration: underline;
+       
+        transform: translateY(5%);
+        transition: .2s;
+    }
+   
+    .menu-nav.active .menu a{
+        font-size: 14px;
         border-bottom: 1px solid black;
         width: 100%;
-        padding: 10px;
         color: black;
     
     }
@@ -521,9 +536,10 @@ body.no-scroll {
     color: var(--corFont);       
     
     }
+
     .menu-nav.active .menu{
         padding: 5px;
-        height: 230px;
+        height:197px ;
         visibility: visible;
         
 
